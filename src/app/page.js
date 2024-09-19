@@ -88,7 +88,7 @@ export default function Component() {
             </Link>
           </div>
           <div className="bg-white p-4 border border-gray-300 text-sm text-center">
-            Don't have an account?{" "}
+            Don&apost have an account?{" "}
             <Link href="#" className="text-blue-500 font-semibold">
               Sign up
             </Link>
